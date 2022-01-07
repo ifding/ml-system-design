@@ -17,7 +17,7 @@
 
 ## Overview of the System
 
-- It uses a `ranking algorithm` to determine what ontent to show.
+- It uses a `ranking algorithm` to determine what content to show.
 - If we describe the system at a higher level, the chain of actions starts when the user `adds or updates` a post on Facebook.
 - This post is received by the `web server`, which then sends it to `application servers`.
 - These application servers coordinate with the `back-end database` to generate a newsfeed.
@@ -45,7 +45,7 @@ Figure from <https://algodaily.com/lessons/dive-into-facebook-newsfeed-architect
 ### Feed Publishing
 
 - `Feed publishing` is the step where feed data is displayed according to each specfic user.
-- This can ve a costly action, as the user may have a large number of friends and followers. 
+- This can be a costly action, as the user may have a large number of friends and followers. 
 - To deal with this, feed publishing has three approaches:
 
 1. push

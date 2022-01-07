@@ -7,10 +7,12 @@ Interviewers will generally ask you to design a machine learning system for a pa
 - You should also ask questions about **performance and capacity considerations** of the system.
 
 ![](./_images/de_ds_ml.png)
+
 Figure from: [Pooyan Jamshidi, UofSC, CSCE 585: Machine Learning Systems](https://pooyanjamshidi.github.io/mls/lectures/)
 
 
 ![](./_images/building_blocks.png)
+
 Figure from: <https://developers.google.com/machine-learning/crash-course/production-ml-systems>
 
 
@@ -90,6 +92,13 @@ You should carefully choose your system’s performance metrics for both online 
 
 - Model training challenge: different use cases in different teams, not the same features, not the same model settings
 - Model training steps should be a configurable by using configuration object, formalize the testing protocol, keep track of the experiment results
+- Evaluation metrics
+  - TP, FP, TN, FN
+  - Confusion matrix
+  - Accuracy, Precision, Recall/Sensitivity, Specificity, F-score (how do you choose among these? imbalanced datasets)
+  - ROC curve (TPR vs FPR, threshold selection)
+  - AUC (model comparison)
+
 
 ### Architecture
 
@@ -134,14 +143,18 @@ The next step is to design your system’s architecture. You need to think about
 
 To build a scalable system, your design needs to efficiently deal with a **large and continually increasing** amount of data. 
 
+- Scaling for increased demand (same as in distributed systems): scaling web app and serving system, data partitioning
+- Data parallelism
+- Model parallelism
+
 For instance, an ML system that displays relevant ads to users can’t process every ad in the system at once. You could use the **funnel approach**, wherein each stage has fewer ads to process. This will yield a scalable system that quickly determines relevant ads for users despite the increase in data.
 
 
 ## Real-world examples
 
+- [Machine Learning Platforms](./platform.md)
 - [Ad Click Prediction for Social Networks](./Ad.md)
 - [COTA: Improving Uber Customer Care with NLP & Machine Learning](./COTA.md)
-- [Machine Learning Platforms](./platform.md)
 - [Facebook Newsfeed Architecture](./newsfeed.md)
 - [How machine learning powers Facebook’s News Feed ranking algorithm](./ranking.md)
 - [Using approximate nearest neighbor search in real world applications](./ANN.md)

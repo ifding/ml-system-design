@@ -11,6 +11,7 @@
 
 
 ![](./_images/RankingFlow.jpg)
+
 Figure from <https://engineering.fb.com/2021/01/26/ml-applications/news-feed-ranking/>
 
 
@@ -36,13 +37,14 @@ Figure from <https://engineering.fb.com/2021/01/26/ml-applications/news-feed-ran
 ## Approximating the ideal ranking function in a scalable ranking system
 
 - We need to score all the posts available for more than 2 billion people (more than 1,000 posts per user, per day, on average), which is challenging.
-- We need to do this in real time, we need to know if an article has received a lot of likes, even if it was just posted minutes ago. 
+- We need to do this in real-time, we need to know if an article has received a lot of likes, even if it was just posted minutes ago. 
 - We also need to know if Juan liked a lot of other content a minute ago, so we can use this information optimally in ranking.
 
 
 Our system architecture uses a **Web/PHP layer**, which queries the **feed aggregator**. The role of the **feed aggregator** is to collect all relevant information about a post and analyze all the features (e.g., how many people have liked this post before) in order to predict the post’s value to the user, as well as the final ranking score by aggregating all the predictions.
 
 ![](./_images/Under-the-Hood_Stills_Final.jpg)
+
 Figure from: <https://engineering.fb.com/2021/01/26/ml-applications/news-feed-ranking/>
 
 - When someone opens up Facebook, regardless of the **front-end** interface (e.g., iPhone, Android phone, web browser), the interface will send a request to a **Web/PHP (front-end) layer**, which then queries the **feed aggregator (back-end layer)**. 

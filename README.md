@@ -3,7 +3,7 @@
 
 Interviewers will generally ask you to design a machine learning system for a particular task. This question is usually broad. 
 
-- The first thing you need to do is **ask questions to narrow down the scope** of the problem and ensure your system’s requirements. 
+- The first thing you need to do is to **ask questions to narrow down the scope** of the problem and ensure your system’s requirements. 
 - You should also ask questions about **performance and capacity considerations** of the system.
 
 ![](./_images/de_ds_ml.png)
@@ -19,8 +19,8 @@ Figure from: <https://developers.google.com/machine-learning/crash-course/produc
 ## Overview
 
 1. Clarify Requirements
-2. How the ML system fits into the overal product backend
-3. Data Related Activites
+2. How the ML system fits into the overall product backend
+3. Data Related Activities
 4. Model Related Activities
 5. Scaling
 
@@ -48,21 +48,21 @@ Figure from: <https://developers.google.com/machine-learning/crash-course/produc
 
 1. Reliability: ML system fails, may not give an error, give garbage outputs
 2. Scalability: Ask questions about the scale of the system - how many users, how much content?
-3. Maintainability: data distribution might get change, how to re-train and update the model
+3. Maintainability: data distribution might get changed, how to re-train and update the model
 4. Adaptability: new data with added features, changes in business objectives, should be flexible
 
 ## Overview
 
-### Data Related Activites
+### Data Related Activities
 
-1. Data Explore - whats the dataset looks like?
+1. Data Explore - what the dataset looks like?
 2. Understand different features and their relationship with the target
   - Is the data balanced? 
   - Is there a missing value (not an issue for tree-based models)
-  - Is there an unexpected value for one/more data columns? How do you know if its a typo etc. and decide to ignore?
+  - Is there an unexpected value for one/more data columns? How do you know if it's a typo etc. and decide to ignore it?
 3. Feature Importance - partial dependency plot, SHAP values
 4. ML Pipeline - Think of Data ingestion services/storage
-5. ML Pipeline - Feature Engineering : encoding categorical features, embedding generation etc.
+5. ML Pipeline - Feature Engineering : encoding categorical features, embedding generation, etc.
 6. ML Pipeline - Data split : train set, validation set, test set
 
 > Embeddings enable us to encode entities (e.g., words, docs, images, person) in a low-dimensional vector space in order to capture their semantic information.
@@ -70,7 +70,7 @@ Figure from: <https://developers.google.com/machine-learning/crash-course/produc
 ### Model Related Activities
 
 1. ML Pipeline - Model Train and Evaluation: How to select a model and hyperparameters?
-2. ML Pipeline - Model Train and Evaluation: Once the model is built, do a bias-variance tradeoff, it will give you an idea of overfitting vs underfitting, you need different approaches to make you model better.
+2. ML Pipeline - Model Train and Evaluation: Once the model is built, do a bias-variance tradeoff, it will give you an idea of overfitting vs underfitting, you need different approaches to make your model better.
 3. Draw the ML pipeline 
 
 ![](./_images/classic_setup.png)
@@ -91,7 +91,7 @@ You should carefully choose your system’s performance metrics for both online 
 > Offline experiment
 
 - Model training challenge: different use cases in different teams, not the same features, not the same model settings
-- Model training steps should be a configurable by using configuration object, formalize the testing protocol, keep track of the experiment results
+- Model training steps should be configurable by using configuration objects, formalizing the testing protocol, keeping track of the experiment results
 - Evaluation metrics
   - TP, FP, TN, FN
   - Confusion matrix
@@ -102,7 +102,7 @@ You should carefully choose your system’s performance metrics for both online 
 
 ### Architecture
 
-The next step is to design your system’s architecture. You need to think about the system’s components and how the data will **flow through those components**. In this step, your aim is to design a model that can scale easily.
+The next step is to design your system’s architecture. You need to think about the system’s components and how the data will **flow through those components**. In this step, you aim to design a model that can scale easily.
 
 ![](./_images/architectural_ml_system.png)
 
@@ -116,10 +116,10 @@ The next step is to design your system’s architecture. You need to think about
 
 ### Testing and Quality in ML
 
-- Unit tests to check features are calculated correctly, numeric are normalized, one-hot vector, missing value?
+- Unit tests to check features are calculated correctly, numeric is normalized, one-hot vector, missing value?
 - Test that the exported model still produces the same results (offline vs online)
-- Validating the model quality, collect and monitor metrics
-- Vallidating model bias and fairness
+- Validating the model quality, collecting and monitoring metrics
+- Validating model bias and fairness
 - Integration test, distribute a **holdout dataset** along with model, and allow to reassess the model's performance against the holdout dataset after it is integrated
 
 
@@ -128,7 +128,7 @@ The next step is to design your system’s architecture. You need to think about
 - Multiple models: more than one model performing the same task
 - Shadow models: deploy the new model side-by-side with the current one, send the dame production traffic to gather data on how the shadow model performs before promoting it into the production
 - Competing models: (1) multiple versions of the model in production - like an A/B test, take some time to gather enough data to make statistically significant decisions. (2) evaluating multiple competing models is multi-armed bandits
-- Online learning models: constantly learning in production, extra complexisities, version model and data.
+- Online learning models: constantly learning in production, extra complexities, version model and data.
 
 
 ### Orchestration in ML pipelines

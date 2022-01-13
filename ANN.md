@@ -1,5 +1,5 @@
 
-# Using approximate nearest neighbor search in real world applications
+# Using approximate nearest neighbor search in real-world applications
 
 
 > Similarity search
@@ -8,11 +8,11 @@
 - For example, an image collection would be represented as a table with one row per indexed photo. Each row contains information such as an image identifier and descriptive text.
 - Rows can be linked to entries from other tables as well, such as an image with people in it being linked to a table of names.
 - The trained Text embedding (word2vec) or convolutional neural net (CNN) models can generate high-dimensional vectors. These representations are much more powerful and flexible than a fixed symbolic representation, as we’ll explain in this post. 
-- These new representations cann't be queried with SQL. First, the huge inflow of new multimedia items creates billions of vectors. Second, finding similar entries means finding similar high-dimensional vectors, which is inefficient if not impossible with standard query languages.
+- These new representations can not be queried with SQL. First, the huge inflow of new multimedia items creates billions of vectors. Second, finding similar entries means finding similar high-dimensional vectors, which is inefficient if not impossible with standard query languages.
 
 Most often, we are interested in finding the most similar vectors. This is called k-nearest neighbor (KNN) search or similarity search and has all kinds of useful applications.
 
-However, a nearest neighbor search is only a part of the process for many applications. For applications doing search and recommendation, the potential candidates from the KNN search are often combined with other facets of the query or request, such as some form of filtering, to refine the results.
+However, the nearest neighbor search is only a part of the process for many applications. For applications doing search and recommendation, the potential candidates from the KNN search are often combined with other facets of the query or request, such as some form of filtering, to refine the results.
 
 > The solution is to integrate the nearest neighbor search with filtering: https://github.com/vespa-engine/vespa
 
@@ -24,7 +24,7 @@ However, a nearest neighbor search is only a part of the process for many applic
 
 ![](./_images/nearest_neighbors.png)
 
-- Finding the nearest neighbors of a point is straight-forward: just compute the similarity using the distance metric between the point and all other points. Unfortunately, this brute-force approach doesn’t scale very well, particularly in time-critical settings such as online serving, where you have a large number of points to consider.
+- Finding the nearest neighbors of a point is straightforward: just compute the similarity using the distance metric between the point and all other points. Unfortunately, this brute-force approach doesn’t scale very well, particularly in time-critical settings such as online serving, where you have a large number of points to consider.
 - There are no known exact methods for finding nearest neighbors efficiently. A good enough solution for many applications is to trade accuracy for efficiency. In approximately nearest neighbors (ANN), we build index structures that narrow down the search space. 
 
 You can roughly divide the approaches used for ANNs into whether or not they can be implemented using an inverse index.
@@ -40,7 +40,7 @@ You can roughly divide the approaches used for ANNs into whether or not they can
 
 ### Nearest neighbors in search and recommendation
 
-In many applications, such as search and recommendation, the results of the nearest neighbor search is combined with additional facets of the request.
+In many applications, such as search and recommendation, the results of the nearest neighbor search are combined with additional facets of the request.
 
 > Text search
 
@@ -57,7 +57,7 @@ Given a user profile and a context such as a search query or page content, the s
 
 ### Faiss
 
-Facebook AI Similarity Search (Faiss), a library that allows us to quickly search for multimedia documents that are similar to each other — a challenge where traditional query search engines fall short. The nearest-neighbor search implementations for billion-scale data sets that are some 8.5x faster than the previous reported state-of-the-art.
+Facebook AI Similarity Search (Faiss), a library that allows us to quickly search for multimedia documents that are similar to each other — a challenge where traditional query search engines fall short. The nearest-neighbor search implementations for billion-scale data sets are some 8.5x faster than the previously reported state-of-the-art.
 
 ![](./_images/Faiss.jpg)
 
